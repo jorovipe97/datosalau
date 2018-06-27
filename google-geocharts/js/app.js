@@ -2,7 +2,7 @@ $(function () { // This is called by jquery when document is loaded
 
   // Colombian heatmap example: http://www.danielpinero.com/como-crear-mapa-calor-colombia
   google.charts.load('current', {
-    'packages':['geochart'],
+    'packages': ['geochart', 'table'],
     // Note: you will need to get a mapsApiKey for your project.
     // See: https://developers.google.com/chart/interactive/docs/basic_load_libs#load-settings
     'mapsApiKey': 'AIzaSyAaxlmWR-_VWkr1qrFIOUurltV6EvulMLo'
@@ -17,6 +17,26 @@ $(function () { // This is called by jquery when document is loaded
   // Chart object
   var chart = null;
   function drawRegionsMap() {
+    // Learing query
+    var foo = [
+      ['Nombre', 'Valor1', 'Valor2', 'Pais'],
+      ['Pepe', 50, 80, 'Colombia'],
+      ['Ronaldo', 75, 99, 'Colombia'],
+      ['Mesi', 33, 52, 'Argentina'],
+      ['Radamel', 80, 30, 'Colombia']
+    ]
+    var dummyData = google.visualization.arrayToDataTable(foo);
+    var table = new google.visualization.Table(document.getElementById('table'));
+    var tableOptions = {};
+
+    // https://developers.google.com/chart/interactive/docs/examples
+    var view = new google.visualization.DataView(dummyData);
+    view.setColumns([0, 1, 3]);
+    console.log(dummyData);
+    view.setRows(view.getFilteredRows([{column: 2, value: 'Colombia'}]));
+    view.setColumns([0, 1]);
+    table.draw(view, tableOptions);
+
     // Nota: El nombre de los departamentos es sensible a tildes
     // NOTA: El nombre de los departamentos no es sensible a mayusculas
     data = google.visualization.arrayToDataTable(visitantes[0].data);
@@ -62,6 +82,7 @@ $(function () { // This is called by jquery when document is loaded
     }
 
     data = google.visualization.arrayToDataTable(visitantes[this.value].data);
+
     chart.draw(data, options);
   }
 
