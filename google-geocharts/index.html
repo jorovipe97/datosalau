@@ -24,6 +24,11 @@
 	<!-- Styles -->
 	<link rel="stylesheet" type="text/css" href="./css/style.css">
 	<!-- <link rel="stylesheet" type="text/css" href="./css/sb-admin-2.css"> -->
+
+  <!-- Font awesome -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.1.0/css/all.css" integrity="sha384-lKuwvrZot6UHsBSfcMvOkWwlCMgc0TaWr+30HWe3a4ltaBwTZhyTEggF5tJv8tbt" crossorigin="anonymous">
+
+
 	
 
 	<!-- Imports google charts library -->
@@ -43,12 +48,25 @@
 </head>
 <body>
 		
-	<div class="container">
-		<div class="row">
+	<div id="dashboard" class="container">
+	  
+    <div class="row">
         <div class="col-sm-12">
-            <h1 class="page-header">Dashboard</h1>
+            <h3 class="page-header">Visitantes de Colombia</h3>
         </div>
         <!-- /.col-sm-12 -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12"><p>En esta visualización se pre-procesan y combinan <a id="goto-datasets-btn" href="#">3 datasets distintos</a> que tienen información sobre el numero de visitantes que reciben los distintos municipios de Colombia.</p></div>
+    </div>    
+
+    <div class="row visible" id="tip-click">
+      <div class="col-sm-12">
+        <div class="alert alert-info">
+          <strong>Click!</strong> Sobre uno de los departamentos y obtendras información detallada de el.
+        </div>
+      </div>      
     </div>
 
     <!-- Colombia Heat Map -->
@@ -57,7 +75,7 @@
     		<div class="card">
     			<div class="card-header">
 
-    				<h5 class="card-title"><i class="fas fa-globe-americas"></i> Mapa de calor de visitantes</h5>
+    				<h5 class="card-title no-mb"><i class="fas fa-globe-americas"></i> Mapa de calor de visitantes</h5>
     			</div>
 
     			<div class="card-body text-center">
@@ -67,7 +85,7 @@
 
     			<div class="card-footer">
             <div class="text-center">
-              <h4>Mueva el slider para seleccionar una fecha</h4>
+              <h4>Mueva el slider para seleccionar otra fecha</h4>
               <div id="output">Fecha actual:</div>
             </div>
     				<!-- Slider -->
@@ -84,17 +102,74 @@
 		<br>
     <hr>
 
-    <div class="row">
+    <div id="details" class="row">
         <div class="col-sm-12">
-            <h2 class="">Información detallada</h2>
+            <h3 class="">Información detallada de <span class="departamento-name"></span></h3>
         </div>
         <!-- /.col-sm-12 -->
     </div>
 
-		<div id="table"></div>
+    <div class="row">
+      <div class="col-sm-12">
 
+        <div class="card">
+          <div class="card-header">
+            <h5 class="card-title no-mb"><i class="fas fa-table"></i> Visitantes por municipios de <span class="departamento-name"></span></h5>
+          </div>
+
+          <div class="card-body text-center">
+            <div id="table"></div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
 		<!-- Slider output -->
 		<!--<h3 id="output">Visitantes departamentos colombia el: load-date-on-page-load</h3>-->
+
+    <div class="row">
+      <div class="col-sm-12">
+        <div class="card">
+          <div class="card-header">
+
+            <h5 class="card-title no-mb"><i class="fas fa-chart-line"></i> Serie de tiempo visitantes</h5>
+          </div>
+
+          <div class="card-body text-center">
+            <div id="line_chart"></div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <br>
+
+    <div class="row justify-content-end">
+      <a id="up-button" href="#" class="btn btn-primary btn-lg">
+        <i class="fas fa-sort-up"></i> Seleccionar otro departamento 
+      </a>       
+    </div>
+
+    <hr>
+
+    <div id="used-datasets" class="row">
+      <div class="col-sm-12">
+          <h3 class="">Datasets utilizados</h3>
+      </div>
+      <!-- /.col-sm-12 -->
+    </div>
+
+    <div class="row">
+      <div class="col-sm-12">
+        <ul>
+          <li><a href="https://www.datos.gov.co/Comercio-Industria-y-Turismo/Pasajeros-Terminales-Terrestres/dbaw-dquh" target="_blank">Pasajeros terminales terrestres.</a></li>
+          <li><a href="https://www.datos.gov.co/Comercio-Industria-y-Turismo/Pasajeros-Aereos-Nacionales/idmw-pexi/data" target="_blank">Pasajeros aéreos nacionales.</a></li>
+          <li><a href="https://www.datos.gov.co/Comercio-Industria-y-Turismo/Pasajeros-Aereo-Internacionales/fku9-uyj6/data" target="_blank">Pasajeros aéreos internacionales.</a></li>
+        </ul>
+      </div>
+      <!-- /.col-sm-12 -->
+    </div>
+
 	</div>
 	
 

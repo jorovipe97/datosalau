@@ -44,3 +44,19 @@ path:not([fill^="#f5f5f5"]):hover { /* More about ^= https://www.w3.org/TR/selec
   cursor: pointer; /* Cursor on hover */
   border-radius: 50%;
 }
+
+/* Dissapear animation */
+#tip-click {
+  overflow: hidden; /* hide the element content, while height = 0*/
+  height: 0; opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+}
+#tip-click.visible {
+    height: 100%; opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+
+/* No margin bottom */
+.no-mb {
+  margin-bottom: 0px;
+}
