@@ -1,0 +1,62 @@
+/* GEO CHART MAP */
+/* Path is an SVG element */
+path:not([fill^="#f5f5f5"]):hover { /* More about ^= https://www.w3.org/TR/selectors-3/#attribute-selectors*/
+    cursor:pointer; 
+}
+
+.slidecontainer {
+  width: 100%; /* Width of the outside container */
+}
+
+/* The slider itself */
+.slider {
+  -webkit-appearance: none;  /* Override default CSS styles */
+  appearance: none;
+  width: 100%; /* Full-width */
+  height: 15px; /* Specified height */
+  background: #d3d3d3; /* Grey background */
+  outline: none; /* Remove outline */
+  opacity: 0.7; /* Set transparency (for mouse-over effects on hover) */
+  -webkit-transition: .2s; /* 0.2 seconds transition on hover */
+  transition: opacity .2s;
+}
+
+/* Mouse-over effects */
+.slider:hover {
+  opacity: 1; /* Fully shown on mouse-over */
+}
+
+/* The slider handle (use -webkit- (Chrome, Opera, Safari, Edge) and -moz- (Firefox) to override default look) */ 
+.slider::-webkit-slider-thumb { /*This is a webkit's pseudo element */
+  -webkit-appearance: none; /* Override default look */
+  appearance: none;
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;    
+}
+
+.slider::-moz-range-thumb {  /*This mozila's pseudo element is similar to the webkit's slider-thumb */
+  width: 25px; /* Set a specific slider handle width */
+  height: 25px; /* Slider handle height */
+  background: #4CAF50; /* Green background */
+  cursor: pointer; /* Cursor on hover */
+  border-radius: 50%;
+}
+
+/* Dissapear animation */
+#tip-click {
+  overflow: hidden; /* hide the element content, while height = 0*/
+  height: 0; opacity: 0;
+  transition: height 0ms 400ms, opacity 400ms 0ms;
+}
+#tip-click.visible {
+    height: 100%; opacity: 1;
+    transition: height 0ms 0ms, opacity 600ms 0ms;
+}
+
+/* No margin bottom */
+.no-mb {
+  margin-bottom: 0px;
+}
